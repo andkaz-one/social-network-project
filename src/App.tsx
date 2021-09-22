@@ -8,7 +8,7 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Sett} from "./components/Sett/Sett";
 
-const App = () => {
+const App = (props: any) => {
 
     return (
         <div className="App">
