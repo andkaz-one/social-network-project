@@ -1,0 +1,14 @@
+.content {
+    display: grid;
+    justify-items: stretch;
+    grid-area: c;
+    background-color: #b2fef7;
+}
+
+.content img {
+
+    height: 300px;
+
+}
+
+
