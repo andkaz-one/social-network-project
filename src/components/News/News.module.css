@@ -1,6 +1,3 @@
 .news {
-    display: grid;
-    justify-items: stretch;
-    grid-area: c;
-    background-color: #b2fef7;
+
 }

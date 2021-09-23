@@ -1,6 +1,47 @@
-.dialogs {
-    display: grid;
-    justify-items: stretch;
-    grid-area: c;
-    background-color: #b2fef7;
+.container {
+    display: flex;
+    flex-grow: 2;
+    justify-content: flex-start;
+    gap: 10rem;
+    padding: 1em;
+
+
 }
+
+.dialogs {
+
+
+
+
+
+
+}
+
+.dialogItem {
+    padding: 5px;
+
+
+
+}
+
+.dialogItem a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.dialogItem a.active {
+    color: moccasin;
+}
+
+.messages {
+
+}
+
+.messageItem {
+    padding: 5px;
+    font-style: oblique;
+
+}
+
+

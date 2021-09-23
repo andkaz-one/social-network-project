@@ -9,8 +9,10 @@
     "n c";
 }
 
-
-
+.AppContent {
+    grid-area: c;
+    background-color: #8ed1c1;
+}
 
 
 

@@ -2,10 +2,11 @@
     display: grid;
     justify-items: stretch;
     grid-area: c;
-    background-color: #b2fef7;
+    background-color: #8ed1c1;
 }
 
 .content img {
+
 
     height: 300px;
 
