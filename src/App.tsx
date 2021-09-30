@@ -8,17 +8,43 @@ import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Sett} from "./components/Sett/Sett";
 
-const App = (props: any) => {
+
+type propsType ={
+    dialogsData: Array<dialog>
+    messagesData: Array<message>
+    postsData: Array<post>
+}
+
+export type dialog = {
+    id: number
+    name: string
+}
+
+export type message = {
+    id: number
+    message: string
+}
+
+export type post = {
+    id: number
+    message: string
+    like: number
+}
+
+
+const App = ({dialogsData, messagesData, postsData, ...props}: propsType) => {
 
     return (
         <div className="App">
             <Header />
             <Navbar/>
             <div className="AppContent">
-                <Route path={'/profile'} component={Content}/>
-                <Route path={'/messages'} component={Dialogs}/>
-                <Route path={'/news'} component={News}/>
-                <Route path={'/settings'} component={Sett}/>
+                <Route path={'/profile'} render={ () => <Content postsData={postsData}/>}/>
+                <Route path={'/messages'} render={() => <Dialogs
+                    dialogsData={dialogsData}
+                    messagesData={messagesData} />}/>
+                <Route path={'/news'} render={ () => News}/>
+                <Route path={'/settings'} render={ () => Sett}/>
             </div>
         </div>
     );
