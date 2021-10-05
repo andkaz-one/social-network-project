@@ -1,22 +1,25 @@
 import React from 'react'
 import {NewPost} from "./NewPost/NewPost";
 import {Post} from "./Post/Post";
-import {post} from "../../../App";
+
+
 
 type myPostsPropsType = {
-    postsData: Array<post>
+    postsData: Array<postsDataPropsData>
+}
+
+type postsDataPropsData = {
+    id: number
+    message: string
+    like: number
 }
 
 
-/*const postsData = [
-    {id: 1, message: 'React', like: 5},
-    {id: 2, message: 'TypeScript', like: 20},
-]*/
 
 
-export const MyPosts = ({postsData,...props}: myPostsPropsType )=> {
+export const MyPosts = (props: myPostsPropsType )=> {
 
-    const postItem = postsData.map((p) => {
+    const postItem = props.postsData.map((p) => {
         return (
             <Post id={p.id} message={p.message} like={p.like}/>
         )

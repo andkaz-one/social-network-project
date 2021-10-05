@@ -7,32 +7,18 @@ import {Route} from "react-router-dom";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Sett} from "./components/Sett/Sett";
+import {RootStateType} from "./redux/State";
 
 
-type propsType ={
-    dialogsData: Array<dialog>
-    messagesData: Array<message>
-    postsData: Array<post>
+type propsType = {
+    state: RootStateType
 }
 
-export type dialog = {
-    id: number
-    name: string
-}
+const App = (props: propsType) => {
+    let postsData = props.state.profilePage.postsData
+    let dialogsData = props.state.dialogsPage.dialogsData
+    let messagesData = props.state.dialogsPage.messagesData
 
-export type message = {
-    id: number
-    message: string
-}
-
-export type post = {
-    id: number
-    message: string
-    like: number
-}
-
-
-const App = ({dialogsData, messagesData, postsData, ...props}: propsType) => {
 
     return (
         <div className="App">
@@ -40,9 +26,7 @@ const App = ({dialogsData, messagesData, postsData, ...props}: propsType) => {
             <Navbar/>
             <div className="AppContent">
                 <Route path={'/profile'} render={ () => <Content postsData={postsData}/>}/>
-                <Route path={'/messages'} render={() => <Dialogs
-                    dialogsData={dialogsData}
-                    messagesData={messagesData} />}/>
+                <Route path={'/messages'} render={() => <Dialogs dialogsData={dialogsData} messagesData={messagesData}/> }/>
                 <Route path={'/news'} render={ () => News}/>
                 <Route path={'/settings'} render={ () => Sett}/>
             </div>
