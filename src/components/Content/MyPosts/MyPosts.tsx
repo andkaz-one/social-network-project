@@ -6,6 +6,7 @@ import {Post} from "./Post/Post";
 
 type myPostsPropsType = {
     postsData: Array<postsDataPropsData>
+    addPostMessage: (postMessage: string) => void
 }
 
 type postsDataPropsData = {
@@ -17,7 +18,7 @@ type postsDataPropsData = {
 
 
 
-export const MyPosts = (props: myPostsPropsType )=> {
+export const MyPosts = ({addPostMessage, ...props}: myPostsPropsType )=> {
 
     const postItem = props.postsData.map((p) => {
         return (
@@ -28,7 +29,7 @@ export const MyPosts = (props: myPostsPropsType )=> {
     return (
         <div>
             <div><h2>My Posts</h2></div>
-            <NewPost/>
+            <NewPost addPostMessage={addPostMessage}/>
             {postItem}
         </div>
 

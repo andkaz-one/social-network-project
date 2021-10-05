@@ -2,6 +2,7 @@
 export type RootStateType = {
     profilePage: profilePageType
     dialogsPage: dialogsPageType
+    sidebar: sidebarType
 }
 
 type profilePageType = {
@@ -31,6 +32,10 @@ type postType = {
     like: number
 }
 
+type sidebarType = Array<string>
+
+
+
 
 
 
@@ -54,6 +59,22 @@ export const state: RootStateType = {
             {id: 3, message: 'Hi'},
         ],
     },
+    sidebar: [
+        "https://cdn-icons-png.flaticon.com/128/174/174858.png",
+        "https://cdn-icons-png.flaticon.com/128/2111/2111615.png",
+        "https://cdn-icons-png.flaticon.com/128/888/888879.png",
+    ]
+
+
+}
+
+export const addPostMessage = (postMessage: string) => {
+    let newPost = {
+        id: 4,
+        message: postMessage,
+        like: 0
+    }
+    state.profilePage.postsData.push(newPost)
 
 }
 

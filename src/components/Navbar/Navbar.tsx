@@ -2,8 +2,14 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './Navbar.module.css'
 
+type propsType = {
+    friendsLogo: Array<string>
+}
 
-export const Navbar = () => {
+
+export const Navbar = ({friendsLogo, ...props}: propsType) => {
+
+    const friendsListElement = friendsLogo.map(l => <img src={l} />)
 
     return (
         <div className={s.navbar}>
@@ -11,6 +17,10 @@ export const Navbar = () => {
             <div><NavLink to={'/messages'} activeClassName={s.active}>Messages</NavLink></div>
             <div><NavLink to={'/news'} activeClassName={s.active}>News</NavLink></div>
             <div><NavLink to={'/settings'} activeClassName={s.active}>Settings</NavLink></div>
+
+            <div className={s.friendsLogo}>
+                {friendsListElement}
+            </div>
 
 
         </div>

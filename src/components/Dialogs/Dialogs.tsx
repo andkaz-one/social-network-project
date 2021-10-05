@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {ChangeEvent} from 'react'
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {MessageItem} from "./MessageItem/MessageItem";
@@ -38,6 +38,13 @@ export const Dialogs = (props: dialogsDataPropsType ) => {
         )
     })
 
+    const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
+        console.log(event.currentTarget.value)
+    }
+    const onClickSendMessageHandler = () => {
+        console.log('click')
+    }
+
     return (
         <div className={s.container}>
             <div className={s.dialogs}>
@@ -46,6 +53,8 @@ export const Dialogs = (props: dialogsDataPropsType ) => {
             <div className={s.messages}>
                 {messageItem}
             </div>
+            <input onChange={onChangeInputHandler} className={s.input} type={"text"}/>
+            <button onClick={onClickSendMessageHandler} className={s.button}>send</button>
         </div>
 
 
