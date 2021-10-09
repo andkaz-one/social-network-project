@@ -1,3 +1,4 @@
+import {renderPage} from "../render";
 
 export type RootStateType = {
     profilePage: profilePageType
@@ -75,6 +76,7 @@ export const addPostMessage = (postMessage: string) => {
         like: 0
     }
     state.profilePage.postsData.push(newPost)
+    renderPage()
 
 }
 

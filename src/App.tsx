@@ -7,7 +7,7 @@ import {Route} from "react-router-dom";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Sett} from "./components/Sett/Sett";
-import {addPostMessage, RootStateType} from "./redux/State";
+import {RootStateType} from "./redux/State";
 
 
 type propsType = {
