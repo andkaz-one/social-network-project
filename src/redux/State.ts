@@ -1,4 +1,10 @@
-import {renderPage} from "../render";
+let renderPage = () => {
+    console.log('rendering')
+}
+
+export const subscribe = (observer: () => void) => {
+    renderPage = observer
+}
 
 export type RootStateType = {
     profilePage: profilePageType
@@ -9,11 +15,13 @@ export type RootStateType = {
 type profilePageType = {
     postsData: Array<postType>
 
+
 }
 
 type dialogsPageType = {
     dialogsData: Array<dialogType>
     messagesData: Array<messageType>
+
 
 }
 
@@ -33,6 +41,7 @@ type postType = {
     like: number
 }
 
+
 type sidebarType = Array<string>
 
 
@@ -47,6 +56,7 @@ export const state: RootStateType = {
             {id: 2, message: 'JavaScript', like: 20},
             {id: 3, message: 'TypeScript', like: 30},
         ],
+
     },
     dialogsPage: {
         dialogsData: [
@@ -77,6 +87,10 @@ export const addPostMessage = (postMessage: string) => {
     }
     state.profilePage.postsData.push(newPost)
     renderPage()
-
 }
+
+
+
+
+
 

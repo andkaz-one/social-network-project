@@ -7,6 +7,7 @@ import {Post} from "./Post/Post";
 type myPostsPropsType = {
     postsData: Array<postsDataPropsData>
     addPostMessage: (postMessage: string) => void
+
 }
 
 type postsDataPropsData = {

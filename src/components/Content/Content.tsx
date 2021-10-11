@@ -9,6 +9,7 @@ import {ProfileDescripcion} from "./ProfileDescription/ProfileDescripcion";
 type contentPropsType = {
     postsData: Array<postsDataPropsData>
     addPostMessage: (postMessage: string) => void
+
 }
 
 type postsDataPropsData = {

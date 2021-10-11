@@ -3,6 +3,7 @@ import s from './NewPost.module.css'
 
 type newPostPropsType = {
     addPostMessage: (postMessage: string) => void
+
 }
 
 export const NewPost = ({addPostMessage, ...props}: newPostPropsType) => {
@@ -12,7 +13,6 @@ export const NewPost = ({addPostMessage, ...props}: newPostPropsType) => {
     const onClickAddPostHandler = () => {
         addPostMessage(postMessage)
         setPostMessage('')
-
     }
     const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setPostMessage(event.currentTarget.value)
