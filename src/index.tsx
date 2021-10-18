@@ -4,7 +4,7 @@ import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import {addPostMessage, RootStateType, state, subscribe} from "./redux/State";
+import {store} from "./redux/State";
 
 
 
@@ -12,7 +12,7 @@ let renderPage = () => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={state} addPostMessage={addPostMessage}/>
+                <App state={store.getState()} addPostMessage={store.addPostMessage.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
@@ -20,7 +20,7 @@ let renderPage = () => {
 }
 
 renderPage()
-subscribe(renderPage)
+store.subscribe(renderPage)
 
 
 reportWebVitals();

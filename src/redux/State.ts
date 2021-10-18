@@ -1,10 +1,10 @@
-let renderPage = () => {
+/*let renderPage = () => {
     console.log('rendering')
 }
 
 export const subscribe = (observer: () => void) => {
     renderPage = observer
-}
+}*/
 
 export type RootStateType = {
     profilePage: profilePageType
@@ -41,15 +41,61 @@ type postType = {
     like: number
 }
 
-
 type sidebarType = Array<string>
 
+export const store = {
+    _state: <RootStateType>{
+        profilePage: {
+            postsData: [
+                {id: 1, message: 'React', like: 45},
+                {id: 2, message: 'JavaScript', like: 20},
+                {id: 3, message: 'TypeScript', like: 30},
+            ],
+
+        },
+        dialogsPage: {
+            dialogsData: [
+                {id: 1, name: 'Andrei',},
+                {id: 2, name: 'Viktoria',},
+                {id: 3, name: 'John',},
+            ],
+            messagesData: [
+                {id: 1, message: 'Hello'},
+                {id: 2, message: 'Whats up'},
+                {id: 3, message: 'Hi'},
+            ],
+        },
+        sidebar: [
+            "https://cdn-icons-png.flaticon.com/128/174/174858.png",
+            "https://cdn-icons-png.flaticon.com/128/2111/2111615.png",
+            "https://cdn-icons-png.flaticon.com/128/888/888879.png",
+        ]
 
 
+    },
+    getState() {
+      return this._state
+    },
+    _callSubscriber() {
+        console.log('rendering')
+    },
+    subscribe (observer: () => void) {
+        this._callSubscriber = observer
+    },
+    addPostMessage (postMessage: string) {
+        let newPost = {
+            id: 4,
+            message: postMessage,
+            like: 0
+        }
+        this._state.profilePage.postsData.push(newPost)
+        this._callSubscriber()
+    },
+
+}
 
 
-
-export const state: RootStateType = {
+/*export const state: RootStateType = {
     profilePage: {
         postsData: [
             {id: 1, message: 'React', like: 45},
@@ -87,7 +133,7 @@ export const addPostMessage = (postMessage: string) => {
     }
     state.profilePage.postsData.push(newPost)
     renderPage()
-}
+}*/
 
 
 
