@@ -1,17 +1,18 @@
 import React, {ChangeEvent, useState} from 'react'
+import {addPostAC, AddPostActionType} from '../../../../redux/State'
 import s from './NewPost.module.css'
 
 type newPostPropsType = {
-    addPostMessage: (postMessage: string) => void
+    dispatch: (action: AddPostActionType) => void
 
 }
 
-export const NewPost = ({addPostMessage, ...props}: newPostPropsType) => {
+export const NewPost = ({dispatch, ...props}: newPostPropsType) => {
 
     let [postMessage, setPostMessage] = useState('')
 
     const onClickAddPostHandler = () => {
-        addPostMessage(postMessage)
+        dispatch(addPostAC(postMessage))
         setPostMessage('')
     }
     const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {

@@ -1,10 +1,19 @@
-/*let renderPage = () => {
-    console.log('rendering')
+
+
+
+// TYPES OF STATE
+
+export type StoreType = {
+    _state: RootStateType
+    getState: () => RootStateType
+    _callSubscriber: () => void
+    subscribe: (observer: () => void) => void
+    dispatch: (action: AddPostActionType) => void
 }
 
-export const subscribe = (observer: () => void) => {
-    renderPage = observer
-}*/
+
+export type AddPostActionType = ReturnType<typeof addPostAC>
+
 
 export type RootStateType = {
     profilePage: profilePageType
@@ -43,8 +52,11 @@ type postType = {
 
 type sidebarType = Array<string>
 
-export const store = {
-    _state: <RootStateType>{
+
+
+//STATEMENT
+export const store: StoreType = {
+    _state: {
         profilePage: {
             postsData: [
                 {id: 1, message: 'React', like: 45},
@@ -79,20 +91,57 @@ export const store = {
     _callSubscriber() {
         console.log('rendering')
     },
-    subscribe (observer: () => void) {
+    subscribe (observer) {
         this._callSubscriber = observer
     },
-    addPostMessage (postMessage: string) {
-        let newPost = {
-            id: 4,
-            message: postMessage,
-            like: 0
+    dispatch(action){
+        if (action.type === 'ADD-POST-MESSAGE') {
+            let newPost = {
+                id: 4,
+                message: action.postMessage,
+                like: 0
+            }
+            this._state.profilePage.postsData.push(newPost)
+            this._callSubscriber()
         }
-        this._state.profilePage.postsData.push(newPost)
-        this._callSubscriber()
-    },
+    }
+}
+
+
+// ACTION CREATORS
+
+export const addPostAC = (postMessage: string) => {
+    return (
+        {
+            type: "ADD-POST-MESSAGE",
+            postMessage: postMessage
+        } as const
+    )
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*export const state: RootStateType = {

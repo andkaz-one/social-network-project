@@ -1,12 +1,13 @@
 import React from 'react'
 import {NewPost} from "./NewPost/NewPost";
 import {Post} from "./Post/Post";
+import {AddPostActionType} from "../../../redux/State";
 
 
 
 type myPostsPropsType = {
     postsData: Array<postsDataPropsData>
-    addPostMessage: (postMessage: string) => void
+    dispatch: (action: AddPostActionType) => void
 
 }
 
@@ -19,7 +20,7 @@ type postsDataPropsData = {
 
 
 
-export const MyPosts = ({addPostMessage, ...props}: myPostsPropsType )=> {
+export const MyPosts = ({dispatch, ...props}: myPostsPropsType )=> {
 
     const postItem = props.postsData.map((p) => {
         return (
@@ -30,7 +31,7 @@ export const MyPosts = ({addPostMessage, ...props}: myPostsPropsType )=> {
     return (
         <div>
             <div><h2>My Posts</h2></div>
-            <NewPost addPostMessage={addPostMessage}/>
+            <NewPost dispatch={dispatch}/>
             {postItem}
         </div>
 
