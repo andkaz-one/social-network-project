@@ -2,6 +2,12 @@ import React, {ChangeEvent} from 'react'
 import s from './Dialogs.module.css'
 import {DialogItem} from "./DialogItem/DialogItem";
 import {MessageItem} from "./MessageItem/MessageItem";
+import {
+    AddPostActionType, sendMessageAC,
+    SendMessageActionType,
+    UpdateMessageActionType,
+    updateMessageTextAC
+} from "../../redux/State";
 
 
 
@@ -9,6 +15,8 @@ import {MessageItem} from "./MessageItem/MessageItem";
 type dialogsDataPropsType = {
     dialogsData: Array<dialogType>
     messagesData: Array<messageType>
+    newMessageText: string
+    dispatch: (action: AddPostActionType | UpdateMessageActionType | SendMessageActionType) => void
 
 }
 
@@ -26,6 +34,8 @@ type messageType = {
 
 export const Dialogs = (props: dialogsDataPropsType ) => {
 
+
+
     const dialogItem = props.dialogsData.map((d) => {
         return (
             <DialogItem id={d.id} name={d.name}/>
@@ -39,10 +49,12 @@ export const Dialogs = (props: dialogsDataPropsType ) => {
     })
 
     const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        console.log(event.currentTarget.value)
+        let newMessage = event.currentTarget.value
+        props.dispatch(updateMessageTextAC(newMessage))
     }
     const onClickSendMessageHandler = () => {
-        console.log('click')
+        props.dispatch(sendMessageAC())
+
     }
 
     return (
@@ -51,10 +63,16 @@ export const Dialogs = (props: dialogsDataPropsType ) => {
                 {dialogItem}
             </div>
             <div className={s.messages}>
-                {messageItem}
+                <div>{messageItem}</div>
+                <div>
+                    <input value={props.newMessageText} onChange={onChangeInputHandler} className={s.input} type={"text"}/>
+                    <button onClick={onClickSendMessageHandler} className={s.button}>send</button>
+                </div>
+
+
             </div>
-            <input onChange={onChangeInputHandler} className={s.input} type={"text"}/>
-            <button onClick={onClickSendMessageHandler} className={s.button}>send</button>
+
+
         </div>
 
 

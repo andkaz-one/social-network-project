@@ -6,13 +6,17 @@
 export type StoreType = {
     _state: RootStateType
     getState: () => RootStateType
-    _callSubscriber: () => void
+    _callSubscriber: (state: RootStateType) => void
     subscribe: (observer: () => void) => void
-    dispatch: (action: AddPostActionType) => void
+    dispatch: (action: AddPostActionType | UpdateMessageActionType | SendMessageActionType) => void
 }
 
 
+
 export type AddPostActionType = ReturnType<typeof addPostAC>
+export type UpdateMessageActionType = ReturnType<typeof updateMessageTextAC>
+export type SendMessageActionType = ReturnType<typeof sendMessageAC>
+
 
 
 export type RootStateType = {
@@ -30,6 +34,7 @@ type profilePageType = {
 type dialogsPageType = {
     dialogsData: Array<dialogType>
     messagesData: Array<messageType>
+    newMessageText: string
 
 
 }
@@ -76,6 +81,7 @@ export const store: StoreType = {
                 {id: 2, message: 'Whats up'},
                 {id: 3, message: 'Hi'},
             ],
+            newMessageText: ''
         },
         sidebar: [
             "https://cdn-icons-png.flaticon.com/128/174/174858.png",
@@ -102,7 +108,15 @@ export const store: StoreType = {
                 like: 0
             }
             this._state.profilePage.postsData.push(newPost)
-            this._callSubscriber()
+            this._callSubscriber(this._state)
+        } else if (action.type === 'NEW-MESSAGE-TEXT') {
+            this._state.dialogsPage.newMessageText = action.newMessage
+            this._callSubscriber(this._state)
+        } else if (action.type === 'SEND-MESSAGE') {
+            let newMessageText = this._state.dialogsPage.newMessageText
+            this._state.dialogsPage.newMessageText = ''
+            this._state.dialogsPage.messagesData.push({id: 4, message: newMessageText})
+            this._callSubscriber(this._state)
         }
     }
 }
@@ -117,6 +131,25 @@ export const addPostAC = (postMessage: string) => {
             postMessage: postMessage
         } as const
     )
+}
+
+export const updateMessageTextAC = (newMessage: string) => {
+    return (
+        {
+            type: 'NEW-MESSAGE-TEXT',
+            newMessage: newMessage
+        } as const
+    )
+}
+
+export const sendMessageAC = () => {
+    return(
+        {
+            type: 'SEND-MESSAGE'
+        } as const
+
+    )
+
 
 }
 

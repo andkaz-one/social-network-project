@@ -7,12 +7,17 @@ import {Route} from "react-router-dom";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Sett} from "./components/Sett/Sett";
-import {AddPostActionType, RootStateType} from "./redux/State";
+import {
+    AddPostActionType,
+    RootStateType,
+    SendMessageActionType,
+    UpdateMessageActionType
+} from "./redux/State";
 
 
 type propsType = {
     state: RootStateType
-    dispatch: (action: AddPostActionType) => void
+    dispatch: (action: AddPostActionType | UpdateMessageActionType | SendMessageActionType) => void
 }
 
 const App = ( {dispatch,...props}: propsType) => {
@@ -20,6 +25,7 @@ const App = ( {dispatch,...props}: propsType) => {
     let dialogsData = props.state.dialogsPage.dialogsData
     let messagesData = props.state.dialogsPage.messagesData
     let friendsLogo = props.state.sidebar
+    let newMessageText = props.state.dialogsPage.newMessageText
 
 
     return (
@@ -28,7 +34,11 @@ const App = ( {dispatch,...props}: propsType) => {
             <Navbar friendsLogo={friendsLogo}/>
             <div className="AppContent">
                 <Route path={'/profile'} render={ () => <Content postsData={postsData} dispatch={dispatch}/>}/>
-                <Route path={'/messages'} render={() => <Dialogs dialogsData={dialogsData} messagesData={messagesData}/> }/>
+                <Route path={'/messages'} render={() => <Dialogs dialogsData={dialogsData}
+                                                                 messagesData={messagesData}
+                                                                 newMessageText={newMessageText}
+                                                                 dispatch={dispatch}
+                /> }/>
                 <Route path={'/news'} render={ () => News}/>
                 <Route path={'/settings'} render={ () => Sett}/>
             </div>
