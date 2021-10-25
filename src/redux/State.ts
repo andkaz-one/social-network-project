@@ -1,8 +1,8 @@
 
-
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
 
 // TYPES OF STATE
-
 export type StoreType = {
     _state: RootStateType
     getState: () => RootStateType
@@ -25,13 +25,13 @@ export type RootStateType = {
     sidebar: sidebarType
 }
 
-type profilePageType = {
+export type profilePageType = {
     postsData: Array<postType>
 
 
 }
 
-type dialogsPageType = {
+export type dialogsPageType = {
     dialogsData: Array<dialogType>
     messagesData: Array<messageType>
     newMessageText: string
@@ -101,7 +101,14 @@ export const store: StoreType = {
         this._callSubscriber = observer
     },
     dispatch(action){
-        if (action.type === 'ADD-POST-MESSAGE') {
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+
+        this._callSubscriber(this._state)
+
+
+        /*if (action.type === 'ADD-POST-MESSAGE') {
             let newPost = {
                 id: 4,
                 message: action.postMessage,
@@ -117,7 +124,7 @@ export const store: StoreType = {
             this._state.dialogsPage.newMessageText = ''
             this._state.dialogsPage.messagesData.push({id: 4, message: newMessageText})
             this._callSubscriber(this._state)
-        }
+        }*/
     }
 }
 
@@ -149,8 +156,6 @@ export const sendMessageAC = () => {
         } as const
 
     )
-
-
 }
 
 
