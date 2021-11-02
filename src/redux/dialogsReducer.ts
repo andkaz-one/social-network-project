@@ -1,15 +1,27 @@
 import {
     AddPostActionType,
     dialogsPageType,
-    SendMessageActionType,
+    SendMessageActionType, TypeOfAC,
     UpdateMessageActionType
 } from "./State";
 
+let initialState: dialogsPageType = {
+    dialogsData: [
+        {id: 1, name: 'Andrei',},
+        {id: 2, name: 'Viktoria',},
+        {id: 3, name: 'John',},
+    ],
+    messagesData: [
+        {id: 1, message: 'Hello'},
+        {id: 2, message: 'Whats up'},
+        {id: 3, message: 'Hi'},
+    ],
+    newMessageText: ''
+}
 
 
-
-const dialogsReducer = (state: dialogsPageType,
-                        action: AddPostActionType | UpdateMessageActionType | SendMessageActionType) => {
+const dialogsReducer = (state = initialState,
+                        action: TypeOfAC) => {
     switch (action.type) {
         case 'NEW-MESSAGE-TEXT':
             state.newMessageText = action.newMessage

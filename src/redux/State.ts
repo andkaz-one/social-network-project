@@ -1,28 +1,31 @@
 
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
+import {sideBarReducer} from "./sideBarReducer";
 
 // TYPES OF STATE
 export type StoreType = {
     _state: RootStateType
     getState: () => RootStateType
     _callSubscriber: (state: RootStateType) => void
-    subscribe: (observer: () => void) => void
-    dispatch: (action: AddPostActionType | UpdateMessageActionType | SendMessageActionType) => void
+    subscribe: (observer: (state: RootStateType) => void) => void
+    dispatch: (action: TypeOfAC ) => void
 }
 
 
+export type TypeOfAC = AddPostActionType | UpdateMessageActionType | SendMessageActionType | sidebarActionType
 
 export type AddPostActionType = ReturnType<typeof addPostAC>
 export type UpdateMessageActionType = ReturnType<typeof updateMessageTextAC>
 export type SendMessageActionType = ReturnType<typeof sendMessageAC>
+export type sidebarActionType = ReturnType<typeof sidebarAC>
 
 
 
 export type RootStateType = {
     profilePage: profilePageType
     dialogsPage: dialogsPageType
-    sidebar: sidebarType
+    sidebar: Array<sidebarType>
 }
 
 export type profilePageType = {
@@ -55,7 +58,10 @@ type postType = {
     like: number
 }
 
-type sidebarType = Array<string>
+export type sidebarType = {
+    id: number
+    value: string
+}
 
 
 
@@ -84,10 +90,10 @@ export const store: StoreType = {
             newMessageText: ''
         },
         sidebar: [
-            "https://cdn-icons-png.flaticon.com/128/174/174858.png",
-            "https://cdn-icons-png.flaticon.com/128/2111/2111615.png",
-            "https://cdn-icons-png.flaticon.com/128/888/888879.png",
-        ]
+            {id: 1, value: "https://cdn-icons-png.flaticon.com/128/174/174858.png" },
+            {id: 2, value: "https://cdn-icons-png.flaticon.com/128/2111/2111615.png" },
+            {id: 3, value: "https://cdn-icons-png.flaticon.com/128/888/888879.png" },
+        ],
 
 
     },
@@ -104,6 +110,7 @@ export const store: StoreType = {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.sidebar = sideBarReducer(this._state.sidebar, action)
 
         this._callSubscriber(this._state)
 
@@ -155,6 +162,14 @@ export const sendMessageAC = () => {
             type: 'SEND-MESSAGE'
         } as const
 
+    )
+}
+
+export const sidebarAC = () => {
+    return (
+        {
+            type: 'SIDEBAR'
+        } as const
     )
 }
 

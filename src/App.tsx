@@ -10,17 +10,18 @@ import {Sett} from "./components/Sett/Sett";
 import {
     AddPostActionType,
     RootStateType,
-    SendMessageActionType,
+    SendMessageActionType, TypeOfAC,
     UpdateMessageActionType
 } from "./redux/State";
 
 
 type propsType = {
     state: RootStateType
-    dispatch: (action: AddPostActionType | UpdateMessageActionType | SendMessageActionType) => void
+    dispatch: (action: TypeOfAC) => void
 }
 
 const App = ( {dispatch,...props}: propsType) => {
+
     let postsData = props.state.profilePage.postsData
     let dialogsData = props.state.dialogsPage.dialogsData
     let messagesData = props.state.dialogsPage.messagesData

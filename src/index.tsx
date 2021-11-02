@@ -4,23 +4,28 @@ import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import {store} from "./redux/State";
+import {store} from "./redux/store";
+import {RootStateType} from "./redux/State";
 
 
 
-let renderPage = () => {
+let renderPage = (state: any) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
-                <App state={store.getState()} dispatch={store.dispatch.bind(store)}/>
+                <App state={state} dispatch={store.dispatch.bind(store)}/>
             </BrowserRouter>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-renderPage()
-store.subscribe(renderPage)
+renderPage(store.getState())
+
+store.subscribe(() => {
+    let state = store.getState()
+    renderPage(state)
+})
 
 
 reportWebVitals();
