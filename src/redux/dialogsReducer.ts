@@ -1,9 +1,23 @@
-import {
-    AddPostActionType,
-    dialogsPageType,
-    SendMessageActionType, TypeOfAC,
-    UpdateMessageActionType
-} from "./State";
+import {TypeOfAC} from "./store";
+
+export type UpdateMessageActionType = ReturnType<typeof updateMessageTextAC>
+export type SendMessageActionType = ReturnType<typeof sendMessageAC>
+
+export type dialogsPageType = {
+    dialogsData: Array<dialogType>
+    messagesData: Array<messageType>
+    newMessageText: string
+}
+
+type dialogType = {
+    id: number
+    name: string
+}
+
+type messageType = {
+    id: number
+    message: string
+}
 
 let initialState: dialogsPageType = {
     dialogsData: [
@@ -36,5 +50,21 @@ const dialogsReducer = (state = initialState,
     }
 }
 
+export const updateMessageTextAC = (newMessage: string) => {
+    return (
+        {
+            type: 'NEW-MESSAGE-TEXT',
+            newMessage: newMessage
+        } as const
+    )
+}
+
+export const sendMessageAC = () => {
+    return(
+        {
+            type: 'SEND-MESSAGE'
+        } as const
+    )
+}
 
 export default dialogsReducer

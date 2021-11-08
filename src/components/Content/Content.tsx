@@ -1,8 +1,9 @@
 import React from 'react'
-import { AddPostActionType } from '../../redux/State';
+
 import s from './Content.module.css'
 import {MyPosts} from "./MyPosts/MyPosts";
 import {ProfileDescripcion} from "./ProfileDescription/ProfileDescripcion";
+import {AddPostActionType} from "../../redux/profileReducer";
 
 
 

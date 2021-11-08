@@ -1,7 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './Navbar.module.css'
-import {sidebarType} from "../../redux/State";
+import {sidebarType} from "../../redux/sideBarReducer";
+
 
 type propsType = {
     friendsLogo: Array<sidebarType>
@@ -9,10 +10,7 @@ type propsType = {
 
 
 export const Navbar = ({friendsLogo, ...props}: propsType) => {
-
     const friendsListElement = friendsLogo.map(m => <img src={m.value}/>)
-
-
 
     return (
         <div className={s.navbar}>
@@ -24,8 +22,6 @@ export const Navbar = ({friendsLogo, ...props}: propsType) => {
             <div className={s.friendsLogo}>
                 {friendsListElement}
             </div>
-
-
         </div>
     )
 }

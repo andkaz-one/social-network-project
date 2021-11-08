@@ -1,4 +1,10 @@
-import {TypeOfAC} from "./State";
+import {TypeOfAC} from "./store";
+
+
+export type sidebarType = {
+    id: number
+    value: string
+}
 
 let initialState = [
     {id: 1, value: "https://cdn-icons-png.flaticon.com/128/174/174858.png" },
@@ -18,6 +24,15 @@ export const sideBarReducer = (state = initialState,
 }
 
 
+export type sidebarActionType = ReturnType<typeof sidebarAC>
+
+export const sidebarAC = () => {
+    return (
+        {
+            type: 'SIDEBAR'
+        } as const
+    )
+}
 
 
 

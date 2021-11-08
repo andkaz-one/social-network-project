@@ -1,27 +1,24 @@
-
-import profileReducer from "./profileReducer";
-import dialogsReducer from "./dialogsReducer";
-import {sideBarReducer} from "./sideBarReducer";
-
 // TYPES OF STATE
+/*
 export type StoreType = {
     _state: RootStateType
     getState: () => RootStateType
     _callSubscriber: (state: RootStateType) => void
     subscribe: (observer: (state: RootStateType) => void) => void
-    dispatch: (action: TypeOfAC ) => void
+    /!*dispatch: (action: TypeOfAC ) => void*!/
 }
+*/
 
 
-export type TypeOfAC = AddPostActionType | UpdateMessageActionType | SendMessageActionType | sidebarActionType
+/*export type TypeOfAC = AddPostActionType | UpdateMessageActionType | SendMessageActionType | sidebarActionType*/
 
-export type AddPostActionType = ReturnType<typeof addPostAC>
-export type UpdateMessageActionType = ReturnType<typeof updateMessageTextAC>
-export type SendMessageActionType = ReturnType<typeof sendMessageAC>
-export type sidebarActionType = ReturnType<typeof sidebarAC>
+/*export type AddPostActionType = ReturnType<typeof addPostAC>*/
+/*export type UpdateMessageActionType = ReturnType<typeof updateMessageTextAC>
+export type SendMessageActionType = ReturnType<typeof sendMessageAC>*/
+/*export type sidebarActionType = ReturnType<typeof sidebarAC>*/
 
 
-
+/*
 export type RootStateType = {
     profilePage: profilePageType
     dialogsPage: dialogsPageType
@@ -61,12 +58,12 @@ type postType = {
 export type sidebarType = {
     id: number
     value: string
-}
+}*/
 
 
 
 //STATEMENT
-export const store: StoreType = {
+/*export const store: StoreType = {
     _state: {
         profilePage: {
             postsData: [
@@ -115,7 +112,7 @@ export const store: StoreType = {
         this._callSubscriber(this._state)
 
 
-        /*if (action.type === 'ADD-POST-MESSAGE') {
+        /!*if (action.type === 'ADD-POST-MESSAGE') {
             let newPost = {
                 id: 4,
                 message: action.postMessage,
@@ -131,23 +128,23 @@ export const store: StoreType = {
             this._state.dialogsPage.newMessageText = ''
             this._state.dialogsPage.messagesData.push({id: 4, message: newMessageText})
             this._callSubscriber(this._state)
-        }*/
+        }*!/
     }
-}
+}*/
 
 
 // ACTION CREATORS
 
-export const addPostAC = (postMessage: string) => {
+/*export const addPostAC = (postMessage: string) => {
     return (
         {
             type: "ADD-POST-MESSAGE",
             postMessage: postMessage
         } as const
     )
-}
+}*/
 
-export const updateMessageTextAC = (newMessage: string) => {
+/*export const updateMessageTextAC = (newMessage: string) => {
     return (
         {
             type: 'NEW-MESSAGE-TEXT',
@@ -163,38 +160,17 @@ export const sendMessageAC = () => {
         } as const
 
     )
-}
+}*/
 
-export const sidebarAC = () => {
+/*export const sidebarAC = () => {
     return (
         {
             type: 'SIDEBAR'
         } as const
     )
-}
+}*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//old state
 
 
 /*export const state: RootStateType = {
@@ -239,6 +215,6 @@ export const addPostMessage = (postMessage: string) => {
 
 
 
-
+export {}
 
 

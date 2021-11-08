@@ -1,13 +1,16 @@
-import {
-    AddPostActionType,
-    profilePageType, SendMessageActionType, store, TypeOfAC, UpdateMessageActionType,
-} from "./State";
-/*
+import {TypeOfAC} from "./store";
 
-type PropsType = {
-    state: profilePageType
-    action: AddPostActionType
-}*/
+export type AddPostActionType = ReturnType<typeof addPostAC>
+
+export type profilePageType = {
+    postsData: Array<postType>
+}
+
+type postType = {
+    id: number
+    message: string
+    like: number
+}
 
 let initialState: profilePageType =  {
     postsData: [
@@ -15,7 +18,6 @@ let initialState: profilePageType =  {
         {id: 2, message: 'JavaScript', like: 20},
         {id: 3, message: 'TypeScript', like: 30},
     ],
-
 }
 
 
@@ -42,3 +44,11 @@ const profileReducer = (state = initialState,
 
 export default profileReducer
 
+export const addPostAC = (postMessage: string) => {
+    return (
+        {
+            type: "ADD-POST-MESSAGE",
+            postMessage: postMessage
+        } as const
+    )
+}

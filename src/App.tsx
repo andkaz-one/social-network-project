@@ -7,12 +7,7 @@ import {Route} from "react-router-dom";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Sett} from "./components/Sett/Sett";
-import {
-    AddPostActionType,
-    RootStateType,
-    SendMessageActionType, TypeOfAC,
-    UpdateMessageActionType
-} from "./redux/State";
+import {RootStateType, TypeOfAC} from './redux/store';
 
 
 type propsType = {
@@ -27,7 +22,6 @@ const App = ( {dispatch,...props}: propsType) => {
     let messagesData = props.state.dialogsPage.messagesData
     let friendsLogo = props.state.sidebar
     let newMessageText = props.state.dialogsPage.newMessageText
-
 
     return (
         <div className="App">

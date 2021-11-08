@@ -4,12 +4,10 @@ import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import {store} from "./redux/store";
-import {RootStateType} from "./redux/State";
+import {RootStateType, store} from "./redux/store";
 
 
-
-let renderPage = (state: any) => {
+let renderPage = (state: RootStateType) => {
     ReactDOM.render(
         <React.StrictMode>
             <BrowserRouter>
