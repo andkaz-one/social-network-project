@@ -5,12 +5,12 @@ import {sidebarType} from "../../redux/sideBarReducer";
 
 
 type propsType = {
-    friendsLogo: Array<sidebarType>
+    friendsLogo?: Array<sidebarType>
 }
 
 
 export const Navbar = ({friendsLogo, ...props}: propsType) => {
-    const friendsListElement = friendsLogo.map(m => <img src={m.value}/>)
+    /*const friendsListElement = friendsLogo.map(m => <img src={m.value}/>)*/
 
     return (
         <div className={s.navbar}>
@@ -20,7 +20,7 @@ export const Navbar = ({friendsLogo, ...props}: propsType) => {
             <div><NavLink to={'/settings'} activeClassName={s.active}>Settings</NavLink></div>
 
             <div className={s.friendsLogo}>
-                {friendsListElement}
+                {/*{friendsListElement}*/}
             </div>
         </div>
     )

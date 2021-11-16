@@ -2,17 +2,18 @@ import React, {ChangeEvent, useState} from 'react'
 
 import s from './NewPost.module.css'
 import {addPostAC, AddPostActionType} from "../../../../redux/profileReducer";
+import {ProfilePropsType} from "../../ContentContainer";
 
-type newPostPropsType = {
+/*type newPostPropsType = {
     dispatch: (action: AddPostActionType) => void
-}
+}*/
 
-export const NewPost = ({dispatch, ...props}: newPostPropsType) => {
+export const NewPost = (props: ProfilePropsType) => {
 
     let [postMessage, setPostMessage] = useState('')
 
     const onClickAddPostHandler = () => {
-        dispatch(addPostAC(postMessage))
+        props.onClickAddPostHandler(postMessage)
         setPostMessage('')
     }
     const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {

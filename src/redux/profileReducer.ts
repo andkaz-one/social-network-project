@@ -6,33 +6,35 @@ export type profilePageType = {
     postsData: Array<postType>
 }
 
-type postType = {
+export type postType = {
     id: number
     message: string
     like: number
 }
 
-let initialState: profilePageType =  {
+let initialState =  {
     postsData: [
         {id: 1, message: 'React', like: 45},
         {id: 2, message: 'JavaScript', like: 20},
         {id: 3, message: 'TypeScript', like: 30},
-    ],
+    ] as Array<postType>,
 }
 
 
 
-const profileReducer = (state = initialState,
-                        action: TypeOfAC) => {
+
+const profileReducer = (state: profilePageType = initialState,
+                        action: TypeOfAC): profilePageType => {
     switch (action.type) {
         case 'ADD-POST-MESSAGE':
+
             let newPost = {
                 id: 4,
                 message: action.postMessage,
                 like: 0
             }
             state.postsData.push(newPost)
-            return state
+            return {...state, postsData: [...state.postsData]}
         default:
             return state
     }

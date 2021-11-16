@@ -1,12 +1,12 @@
 import {combineReducers, createStore} from "redux";
 import profileReducer, {AddPostActionType, profilePageType} from "./profileReducer";
-import dialogsReducer, {dialogsPageType, SendMessageActionType, UpdateMessageActionType} from "./dialogsReducer";
+import dialogsReducer, { SendMessageActionType, UpdateMessageActionType} from "./dialogsReducer";
 import {sidebarActionType, sideBarReducer, sidebarType} from "./sideBarReducer";
 
 
 export type RootStateType = {
     profilePage: profilePageType
-    dialogsPage: dialogsPageType
+   /* dialogsPage: dialogsPageType*/
     sidebar: Array<sidebarType>
 }
 
