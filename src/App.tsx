@@ -10,6 +10,7 @@ import {Sett} from "./components/Sett/Sett";
 import {rootReducerType, RootStateType, TypeOfAC} from './redux/store';
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import {ContentContainer} from "./components/Content/ContentContainer";
+import {Users} from "./components/Users/Users";
 
 type propsType = {
     /*state: rootReducerType*/
@@ -31,6 +32,7 @@ const App = (props: propsType) => {
             <div className="AppContent">
                 <Route path={'/profile'} render={ () => <ContentContainer />}/>
                 <Route path={'/messages'} render={() => <DialogsContainer />}/>
+                <Route path={'/users'} render={() => <Users />}/>
                 <Route path={'/news'} render={ () => News}/>
                 <Route path={'/settings'} render={ () => Sett}/>
             </div>
