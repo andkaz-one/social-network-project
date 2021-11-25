@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {rootReducerType, RootStateType} from "../../redux/store";
+import {rootReducerType} from "../../redux/store";
 import {InitialStateType, sendMessageAC, updateMessageTextAC} from "../../redux/dialogsReducer";
 import {Dispatch} from "redux";
 import {Dialogs} from "./Dialogs";
