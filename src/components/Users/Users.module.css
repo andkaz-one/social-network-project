@@ -1,0 +1,33 @@
+.wrapper {
+    display: flex;
+    margin: 10px;
+}
+
+
+
+.container{
+    margin: 10px;
+    max-width: 600px;
+    width: 500px;
+    border: #4f9a94 1px solid ;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    background-color: white;
+
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo img {
+    width: 90px;
+    height: 90px;
+
+}
+.logo div {
+    text-align: center;
+}

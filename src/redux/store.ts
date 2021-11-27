@@ -2,7 +2,7 @@ import {combineReducers, createStore} from "redux";
 import profileReducer, {AddPostActionType, profilePageType} from "./profileReducer";
 import dialogsReducer, { SendMessageActionType, UpdateMessageActionType} from "./dialogsReducer";
 import {sidebarActionType, sideBarReducer, sidebarType} from "./sideBarReducer";
-import {usersReducer} from "./usersReducer";
+import {followActionType, setUsersActionType, unfollowActionType, usersReducer} from "./usersReducer";
 
 
 /*export type RootStateType = {
@@ -12,13 +12,19 @@ import {usersReducer} from "./usersReducer";
     users: Array<UserType>
 }*/
 
-export type TypeOfAC = AddPostActionType | UpdateMessageActionType | SendMessageActionType | sidebarActionType
+export type TypeOfAC = AddPostActionType |
+    UpdateMessageActionType |
+    SendMessageActionType |
+    sidebarActionType |
+    followActionType |
+    unfollowActionType |
+    setUsersActionType
 
 let rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     sidebar: sideBarReducer,
-    users: usersReducer
+    usersPage: usersReducer
 })
 
 export type rootReducerType = ReturnType<typeof rootReducer>
