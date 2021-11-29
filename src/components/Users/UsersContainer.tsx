@@ -5,11 +5,11 @@ import {Dispatch} from "redux";
 import {followAC, InitialStateUsersType, setUsersAC, unfollowAC, UserType} from "../../redux/usersReducer";
 
 
-type MapStatePropsType = {
+export type MapStatePropsType = {
     users: InitialStateUsersType
 }
 
-type MapDispatchPropsType = {
+export type MapDispatchPropsType = {
     followHandler: (userID: number) => void
     unFollowHandler: (userID: number) => void
     setUsers: (users: Array<UserType>) => void
