@@ -34,7 +34,6 @@ const App = () => {
                 <Route path={'/profile'} render={ () => <ContentContainer />}/>
                 <Route path={'/messages'} render={() => <DialogsContainer />}/>
                 <Route path={'/users'} render={() => <UsersContainer />}/>
-                <Route path={'/users'} render={() => <UsersContainer />}/>
                 <Route path={'/news'} render={ () => News}/>
                 <Route path={'/settings'} render={ () => Sett}/>
             </div>

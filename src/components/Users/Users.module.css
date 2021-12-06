@@ -31,3 +31,8 @@
 .logo div {
     text-align: center;
 }
+
+.active {
+    font-weight: bold;
+    color: moccasin;
+}

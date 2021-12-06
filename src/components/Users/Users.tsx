@@ -1,30 +1,51 @@
 import React from 'react'
 import {UsersPagePropsType} from "./UsersContainer";
 import s from './Users.module.css'
-import  axios from "axios";
+import axios from "axios";
 import {InitialStateUsersType} from "../../redux/usersReducer";
 import userLogo from '../../assets/img/user-logo.png'
 
 
+export class Users extends React.Component<UsersPagePropsType, InitialStateUsersType> {
 
 
-
-
-export class Users extends React.Component<UsersPagePropsType,InitialStateUsersType   > {
-    constructor(props: UsersPagePropsType) {
-        super(props);
-
-        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(res => {
                 this.props.setUsers(res.data.items)
             })
+    }
 
+    onClickPageHandler = (pageNumber: number) => {
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(res => {
+                this.props.setUsers(res.data.items)
+            })
     }
 
 
     render() {
+
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
+
         return (
+
             <div>
+                <div>
+                    {pages.map(page => {
+                        return <span className={this.props.currentPage === page ? s.active : ''}
+                                     onClick={() => this.onClickPageHandler(page)}>
+                            {page}
+                        </span>
+                    })}
+                </div>
                 {this.props.users.users.map(user => {
                     return (
                         <div key={user.id} className={s.wrapper}>
@@ -56,14 +77,6 @@ export class Users extends React.Component<UsersPagePropsType,InitialStateUsersT
 
 
 }
-
-
-
-
-
-
-
-
 
 
 /*
