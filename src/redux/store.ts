@@ -4,7 +4,7 @@ import dialogsReducer, { SendMessageActionType, UpdateMessageActionType} from ".
 import {sidebarActionType, sideBarReducer, sidebarType} from "./sideBarReducer";
 import {
     followActionType,
-    setCurrentPageActionType, setTotalUsersCountActionType,
+    setCurrentPageActionType, setPreloaderActionType, setTotalUsersCountActionType,
     setUsersActionType,
     unfollowActionType,
     usersReducer
@@ -26,7 +26,8 @@ export type TypeOfAC = AddPostActionType |
     unfollowActionType |
     setUsersActionType |
     setCurrentPageActionType |
-    setTotalUsersCountActionType
+    setTotalUsersCountActionType |
+    setPreloaderActionType
 
 let rootReducer = combineReducers({
     profilePage: profileReducer,

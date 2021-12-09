@@ -10,7 +10,6 @@ import {Sett} from "./components/Sett/Sett";
 
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import {ContentContainer} from "./components/Content/ContentContainer";
-import {Users} from "./components/Users/Users";
 import {UsersContainer} from "./components/Users/UsersContainer";
 
 /*type propsType = {

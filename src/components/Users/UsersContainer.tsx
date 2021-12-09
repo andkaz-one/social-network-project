@@ -1,11 +1,11 @@
 import {connect} from "react-redux";
-import {Users} from "./Users";
+import {UsersAPIComponent} from "./UsersAPIComponent";
 import {rootReducerType} from "../../redux/store";
 import {Dispatch} from "redux";
 import {
     followAC,
     InitialStateUsersType,
-    setCurrentPageAC, setTotalUsersCountAC,
+    setCurrentPageAC, setPreloaderAC, setTotalUsersCountAC,
     setUsersAC,
     unfollowAC,
     UserType
@@ -25,6 +25,7 @@ export type MapDispatchPropsType = {
     setUsers: (users: Array<UserType>) => void
     setCurrentPage: (setCurrentPage: number) => void
     setTotalUsersCount: (totalCount: number) => void
+    setPreloader: (isLoad: boolean) => void
 }
 
 export type UsersPagePropsType = MapStatePropsType & MapDispatchPropsType
@@ -51,8 +52,11 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => ({
     },
     setTotalUsersCount: (totalCount: number) => {
         dispatch(setTotalUsersCountAC(totalCount))
+    },
+    setPreloader: (isLoad: boolean) => {
+        dispatch(setPreloaderAC(isLoad))
     }
 })
 
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps) (Users)
+export const UsersContainer = connect(mapStateToProps, mapDispatchToProps) (UsersAPIComponent)
