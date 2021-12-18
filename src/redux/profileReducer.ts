@@ -2,8 +2,10 @@ import {TypeOfAC} from "./store";
 
 export type AddPostActionType = ReturnType<typeof addPostAC>
 
+
 export type profilePageType = {
     postsData: Array<postType>
+
 }
 
 export type postType = {
@@ -18,10 +20,8 @@ let initialState =  {
         {id: 2, message: 'JavaScript', like: 20},
         {id: 3, message: 'TypeScript', like: 30},
     ] as Array<postType>,
+
 }
-
-
-
 
 const profileReducer = (state: profilePageType = initialState,
                         action: TypeOfAC): profilePageType => {
@@ -35,14 +35,11 @@ const profileReducer = (state: profilePageType = initialState,
             }
             state.postsData.push(newPost)
             return {...state, postsData: [...state.postsData]}
+
         default:
             return state
     }
 }
-
-
-
-
 
 export default profileReducer
 
@@ -54,3 +51,4 @@ export const addPostAC = (postMessage: string) => {
         } as const
     )
 }
+

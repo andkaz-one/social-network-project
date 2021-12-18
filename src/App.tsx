@@ -2,28 +2,17 @@ import React from 'react';
 import './App.css';
 import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
-import {Content} from "./components/Content/Content";
 import {Route} from "react-router-dom";
-import {Dialogs} from "./components/Dialogs/Dialogs";
 import {News} from "./components/News/News";
 import {Sett} from "./components/Sett/Sett";
-
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 import {ContentContainer} from "./components/Content/ContentContainer";
 import {UsersContainer} from "./components/Users/UsersContainer";
 
-/*type propsType = {
-    /!*state: rootReducerType*!/
-    /!*dispatch: (action: TypeOfAC) => void*!/
-}*/
+
 
 const App = () => {
 
-   /* let postsData = props.state.profilePage.postsData*/
-   /* let dialogsData = props.state.dialogsPage.dialogsData
-    let messagesData = props.state.dialogsPage.messagesData*/
-    /*let friendsLogo = props.state.sidebar*/
-    /*let newMessageText = props.state.dialogsPage.newMessageText*/
 
     return (
         <div className="App">
