@@ -1,11 +1,12 @@
 import {connect} from "react-redux";
 import {UsersAPIComponent} from "./UsersAPIComponent";
 import {rootReducerType} from "../../redux/store";
-import {Dispatch} from "redux";
 import {
     followAC,
     InitialStateUsersType,
-    setCurrentPageAC, setPreloaderAC, setTotalUsersCountAC,
+    setCurrentPageAC,
+    setPreloaderAC,
+    setTotalUsersCountAC,
     setUsersAC,
     unfollowAC,
     UserType
@@ -37,26 +38,13 @@ const mapStateToProps = (state: rootReducerType): MapStatePropsType => ({
     currentPage: state.usersPage.currentPage
 })
 
-const mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => ({
-    followHandler: (userID: number) => {
-        dispatch(followAC(userID))
-    },
-        unFollowHandler: (userID: number) => {
-        dispatch(unfollowAC(userID))
-    },
-    setUsers: (users: Array<UserType>) => {
-        dispatch(setUsersAC(users))
-    },
-    setCurrentPage: (currentPage: number) => {
-        dispatch(setCurrentPageAC(currentPage))
-    },
-    setTotalUsersCount: (totalCount: number) => {
-        dispatch(setTotalUsersCountAC(totalCount))
-    },
-    setPreloader: (isLoad: boolean) => {
-        dispatch(setPreloaderAC(isLoad))
-    }
-})
 
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps) (UsersAPIComponent)
+export const UsersContainer = connect(mapStateToProps, {
+    followHandler: followAC,
+    unFollowHandler: unfollowAC,
+    setUsers: setUsersAC,
+    setCurrentPage: setCurrentPageAC,
+    setTotalUsersCount: setTotalUsersCountAC,
+    setPreloader: setPreloaderAC
+})(UsersAPIComponent)
