@@ -1,9 +1,17 @@
 import React from "react";
 
+type PropsType = {
+    profile: any
+}
 
-export const ProfileDescripcion = () => {
+
+export const ProfileDescripcion = (props: PropsType) => {
+
 
     return(
-        <div>ava + description</div>
+        <div>
+            <img src={props.profile.photos.large}/>
+            ava + description
+        </div>
     )
 }

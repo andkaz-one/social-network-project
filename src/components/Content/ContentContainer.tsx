@@ -5,6 +5,10 @@ import {Content} from "./Content";
 
 
 
+
+
+
+
 type MapStatePropsType = {
     postsData: profilePageType
 

@@ -2,6 +2,7 @@ import s from "./Users.module.css";
 import React from "react";
 import userLogo from '../../assets/img/user-logo.png'
 import {InitialStateUsersType} from "../../redux/usersReducer";
+import { NavLink } from "react-router-dom";
 
 
 type PropsType = {
@@ -37,7 +38,9 @@ export const Users = (props: PropsType) => {
                 return (
                     <div key={user.id} className={s.wrapper}>
                         <div className={s.logo}>
-                            <img src={userLogo}/>
+                            <NavLink to={`profile/${user.id}`}>
+                                <img src={userLogo}/>
+                            </NavLink>
                             <div>{user.followed ?
                                 <button onClick={() => props.unFollowHandler(user.id)}>Unfollow</button>
                                 : <button onClick={() => props.followHandler(user.id)}>Follow</button>}</div>
