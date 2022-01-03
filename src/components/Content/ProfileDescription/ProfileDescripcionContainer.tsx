@@ -4,19 +4,24 @@ import {profilePageType, setProfileAC} from "../../../redux/profileReducer";
 import {ProfileDescripcion} from "./ProfileDescripcion";
 import { connect } from "react-redux";
 import {rootReducerType} from "../../../redux/store";
+import { withRouter } from "react-router-dom";
 
 
 class ProfileDescripcionContainer extends React.Component<any, profilePageType>{
 
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
-            .then(res => {
-                this.props.setProfileAC(res.data)
+        let userId = this.props.match.params.userId
+        if(!userId) {
+            userId = 2
+        }
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
+            .then(response => {
+                this.props.setProfileAC(response.data)
             })
     }
 
     render() {
-        return <ProfileDescripcion profile={this.props.profile}/>
+        return <ProfileDescripcion {...this.props} profile={this.props.profile}/>
     }
 }
 
@@ -27,4 +32,7 @@ const mapStateToProps = (state: rootReducerType) => ({
 })
 
 
-export default connect (mapStateToProps, {setProfileAC})(ProfileDescripcionContainer)
+const ProfileDescriptionWithRouter = withRouter(ProfileDescripcionContainer)
+
+
+export default connect (mapStateToProps, {setProfileAC})(ProfileDescriptionWithRouter)

@@ -6,7 +6,7 @@ export type SetProfileActionType = ReturnType<typeof setProfileAC>
 
 export type profilePageType = {
     postsData: Array<postType>
-    profile: any
+    profile: object
 
 }
 
@@ -23,10 +23,8 @@ let initialProfileState =  {
         {id: 3, message: 'TypeScript', like: 30},
     ] as Array<postType>,
     profile: {}
-
-
-
 }
+
 
 const profileReducer = (state: profilePageType = initialProfileState,
                         action: TypeOfAC): profilePageType => {
@@ -60,7 +58,7 @@ export const addPostAC = (postMessage: string) => {
     )
 }
 
-export const setProfileAC = (profile: any) => {
+export const setProfileAC = (profile: object) => {
     return (
         {
             type: 'SET-PROFILE',

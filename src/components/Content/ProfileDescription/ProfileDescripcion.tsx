@@ -7,11 +7,12 @@ type PropsType = {
 
 export const ProfileDescripcion = (props: PropsType) => {
 
-
+debugger
     return(
+
         <div>
-            <img src={props.profile.photos.large}/>
-            ava + description
+            <img src={props.profile.photos && props.profile.photos.large} alt={''}/>
+            <div><h3>{props.profile.fullName}</h3></div>
         </div>
     )
 }

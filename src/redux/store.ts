@@ -9,6 +9,7 @@ import {
     unfollowActionType,
     usersReducer
 } from "./usersReducer";
+import {authReducer, setUserAuthDataActionType} from "./authReducer";
 
 
 export type TypeOfAC = AddPostActionType |
@@ -21,17 +22,21 @@ export type TypeOfAC = AddPostActionType |
     setCurrentPageActionType |
     setTotalUsersCountActionType |
     setPreloaderActionType |
-    SetProfileActionType
+    SetProfileActionType |
+    setUserAuthDataActionType
 
 
 let rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     sidebar: sideBarReducer,
-    usersPage: usersReducer
+    usersPage: usersReducer,
+    authorization: authReducer
 })
 
 export type rootReducerType = ReturnType<typeof rootReducer>
 
 
 export let store = createStore(rootReducer)
+
+
