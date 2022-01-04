@@ -25,6 +25,7 @@ export const authReducer = (state: InitialStateAuthType = initialState, action: 
     switch (action.type) {
         case 'SET-AUTH': {
             return {...state, ...action.data}
+
         }
 
         default:

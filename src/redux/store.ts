@@ -40,3 +40,6 @@ export type rootReducerType = ReturnType<typeof rootReducer>
 export let store = createStore(rootReducer)
 
 
+console.log(store.getState())
+
+

@@ -7,7 +7,7 @@ type PropsType = {
 
 export const ProfileDescripcion = (props: PropsType) => {
 
-debugger
+
     return(
 
         <div>
